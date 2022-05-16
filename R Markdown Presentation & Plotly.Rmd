@@ -1,0 +1,51 @@
+---
+title: "R Markdown Presentation & Plotly"
+author: "Jia Jing Liew"
+date: "`r Sys.Date()`"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+Loading packages and reading data
+```{r}
+Sys.setenv(LANGUAGE="en")
+library(ggplot2)
+library(plotly)
+library(zoo)
+library(datasets)
+data(airquality)
+a<-data.frame(airquality)
+head(a,3)
+summary(a$Ozone)
+
+summary(a$Solar.R)
+
+summary(a$Wind)
+
+summary(a$Temp)
+```
+
+```{r}
+
+plot_ly(a, x=a$Day, y=a$Solar.R, type="bar", mode="markers") %>%
+      layout(xaxis = list(title = 'Day'), yaxis = list(title = 'Solar.R'))
+             
+plot_ly(a, x=a$Day, y=a$Wind, type="bar", mode="markers") %>%
+      layout(xaxis = list(title = 'Day'), yaxis = list(title = 'Wind'))             
+             
+plot_ly(a, x=a$Day, y=a$Temp, type="scatter", mode="markers") %>%
+      layout(xaxis = list(title = 'Day'), yaxis = list(title = 'Temp'))
+
+
+plot_ly(a, x=a$Ozone, y=a$Temp, type="scatter", mode="markers") %>%
+      layout(xaxis = list(title = 'Ozone'), yaxis = list(title = 'Temp'))
+
+```
+
+
+
+
