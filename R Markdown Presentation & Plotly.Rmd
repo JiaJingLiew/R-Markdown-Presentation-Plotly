@@ -28,7 +28,7 @@ summary(a$Wind)
 
 summary(a$Temp)
 ```
-
+Ploting diagrams
 ```{r}
 
 plot_ly(a, x=a$Day, y=a$Solar.R, type="bar", mode="markers") %>%
